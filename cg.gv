@@ -1,0 +1,290 @@
+digraph "wasm_call_graph_octopus.gv" {
+	rankdir=LR
+	subgraph global {
+		setStorage [fillcolor=turquoise shape=box style=filled]
+		setStorage [fillcolor=turquoise shape=box style=filled]
+		getCallDataSize [fillcolor=turquoise shape=box style=filled]
+		getCallDataSize [fillcolor=turquoise shape=box style=filled]
+		getCallData [fillcolor=turquoise shape=box style=filled]
+		getCallData [fillcolor=turquoise shape=box style=filled]
+		getCaller [fillcolor=turquoise shape=box style=filled]
+		getCaller [fillcolor=turquoise shape=box style=filled]
+		getStorage [fillcolor=turquoise shape=box style=filled]
+		getStorage [fillcolor=turquoise shape=box style=filled]
+		finish [fillcolor=turquoise shape=box style=filled]
+		finish [fillcolor=turquoise shape=box style=filled]
+		revert [fillcolor=turquoise shape=box style=filled]
+		revert [fillcolor=turquoise shape=box style=filled]
+		registerAsset [fillcolor=turquoise shape=box style=filled]
+		registerAsset [fillcolor=turquoise shape=box style=filled]
+		"$func8" [fillcolor=white shape=ellipse style=filled]
+		"$func9" [fillcolor=white shape=ellipse style=filled]
+		"$func10" [fillcolor=white shape=hexagon style=filled]
+		"$func11" [fillcolor=white shape=ellipse style=filled]
+		"$func12" [fillcolor=white shape=ellipse style=filled]
+		"$func13" [fillcolor=white shape=ellipse style=filled]
+		"$func14" [fillcolor=white shape=ellipse style=filled]
+		"$func15" [fillcolor=white shape=ellipse style=filled]
+		"$func16" [fillcolor=white shape=ellipse style=filled]
+		"$func17" [fillcolor=white shape=ellipse style=filled]
+		"$func18" [fillcolor=white shape=ellipse style=filled]
+		"$func19" [fillcolor=white shape=ellipse style=filled]
+		"$func20" [fillcolor=white shape=ellipse style=filled]
+		"$func21" [fillcolor=white shape=ellipse style=filled]
+		"$func22" [fillcolor=white shape=ellipse style=filled]
+		"$func23" [fillcolor=white shape=ellipse style=filled]
+		"$func24" [fillcolor=white shape=ellipse style=filled]
+		"$func25" [fillcolor=white shape=ellipse style=filled]
+		"$func26" [fillcolor=white shape=ellipse style=filled]
+		"$func27" [fillcolor=white shape=ellipse style=filled]
+		"$func28" [fillcolor=white shape=ellipse style=filled]
+		"$func29" [fillcolor=white shape=ellipse style=filled]
+		"$func30" [fillcolor=white shape=ellipse style=filled]
+		"$func31" [fillcolor=white shape=ellipse style=filled]
+		"$func32" [fillcolor=white shape=ellipse style=filled]
+		hash_type [fillcolor=grey shape=box style=filled]
+		hash_type [fillcolor=grey shape=box style=filled]
+		deploy [fillcolor=grey shape=box style=filled]
+		deploy [fillcolor=grey shape=box style=filled]
+		main [fillcolor=grey shape=box style=filled]
+		main [fillcolor=grey shape=box style=filled]
+		"$func36" [fillcolor=white shape=ellipse style=filled]
+		"$func37" [fillcolor=white shape=ellipse style=filled]
+		"$func38" [fillcolor=white shape=ellipse style=filled]
+		"$func39" [fillcolor=white shape=ellipse style=filled]
+		"$func40" [fillcolor=white shape=ellipse style=filled]
+		"$func41" [fillcolor=white shape=ellipse style=filled]
+		"$func42" [fillcolor=white shape=ellipse style=filled]
+		"$func43" [fillcolor=white shape=ellipse style=filled]
+		"$func44" [fillcolor=white shape=ellipse style=filled]
+		"$func45" [fillcolor=white shape=ellipse style=filled]
+		"$func46" [fillcolor=white shape=ellipse style=filled]
+		"$func47" [fillcolor=white shape=ellipse style=filled]
+		"$func48" [fillcolor=white shape=ellipse style=filled]
+		"$func49" [fillcolor=white shape=ellipse style=filled]
+		"$func50" [fillcolor=white shape=ellipse style=filled]
+		"$func51" [fillcolor=white shape=ellipse style=filled]
+		"$func52" [fillcolor=white shape=ellipse style=filled]
+		"$func53" [fillcolor=white shape=ellipse style=filled]
+		"$func54" [fillcolor=white shape=ellipse style=filled]
+		"$func55" [fillcolor=white shape=hexagon style=dashed]
+		"$func56" [fillcolor=white shape=ellipse style=filled]
+		"$func57" [fillcolor=white shape=ellipse style=filled]
+		"$func58" [fillcolor=white shape=ellipse style=filled]
+		"$func59" [fillcolor=white shape=ellipse style=filled]
+		"$func60" [fillcolor=white shape=ellipse style=filled]
+		"$func61" [fillcolor=white shape=ellipse style=filled]
+		"$func62" [fillcolor=white shape=ellipse style=filled]
+		"$func63" [fillcolor=white shape=ellipse style=filled]
+		"$func64" [fillcolor=white shape=ellipse style=filled]
+		"$func65" [fillcolor=white shape=ellipse style=filled]
+		"$func66" [fillcolor=white shape=ellipse style=filled]
+		"$func67" [fillcolor=white shape=ellipse style=filled]
+		"$func68" [fillcolor=white shape=ellipse style=filled]
+		"$func69" [fillcolor=white shape=ellipse style=filled]
+		"$func70" [fillcolor=white shape=ellipse style=filled]
+		"$func71" [fillcolor=white shape=ellipse style=filled]
+		"$func72" [fillcolor=white shape=ellipse style=filled]
+		"$func73" [fillcolor=white shape=ellipse style=filled]
+		"$func74" [fillcolor=white shape=ellipse style=filled]
+		"$func75" [fillcolor=white shape=ellipse style=filled]
+		"$func76" [fillcolor=white shape=ellipse style=filled]
+		"$func77" [fillcolor=white shape=ellipse style=filled]
+		"$func78" [fillcolor=white shape=ellipse style=filled]
+		"$func79" [fillcolor=white shape=ellipse style=filled]
+		"$func80" [fillcolor=white shape=ellipse style=filled]
+		"$func81" [fillcolor=white shape=ellipse style=filled]
+		"$func82" [fillcolor=white shape=ellipse style=filled]
+		"$func83" [fillcolor=white shape=ellipse style=filled]
+		"$func84" [fillcolor=white shape=ellipse style=filled]
+		"$func85" [fillcolor=white shape=ellipse style=filled]
+		"$func86" [fillcolor=white shape=ellipse style=filled]
+		"$func87" [fillcolor=white shape=ellipse style=filled]
+		"$func88" [fillcolor=white shape=ellipse style=filled]
+		"$func89" [fillcolor=white shape=hexagon style=dashed]
+		"$func90" [fillcolor=white shape=hexagon style=dashed]
+		"$func91" [fillcolor=white shape=hexagon style=dashed]
+		"$func92" [fillcolor=white shape=ellipse style=dashed]
+		"$func93" [fillcolor=white shape=ellipse style=filled]
+		"$func44" -> getStorage
+		"$func45" -> "$func65"
+		"$func26" -> "$func43" [label=2]
+		"$func51" -> "$func49"
+		"$func26" -> "$func19" [label=2]
+		"$func59" -> "$func78"
+		"$func30" -> "$func36"
+		main -> "$func85" [label=2]
+		main -> "$func14"
+		main -> "$func81"
+		"$func27" -> "$func21" [label=3]
+		deploy -> "$func28"
+		"$func20" -> "$func17"
+		"$func20" -> "$func18"
+		main -> "$func82" [label=2]
+		"$func39" -> "$func69"
+		"$func32" -> "$func70"
+		deploy -> "$func52"
+		main -> "$func84"
+		"$func47" -> "$func48"
+		"$func13" -> "$func57" [label=2]
+		"$func40" -> "$func64"
+		"$func8" -> "$func37"
+		deploy -> "$func26"
+		"$func61" -> "$func59"
+		"$func62" -> "$func73"
+		"$func26" -> "$func50"
+		"$func45" -> "$func56" [label=2]
+		main -> "$func52"
+		main -> "$func12" [label=2]
+		"$func90" -> "$func92"
+		"$func22" -> "$func19" [label=2]
+		"$func38" -> "$func59" [label=2]
+		deploy -> "$func13" [label=3]
+		"$func66" -> "$func37"
+		"$func11" -> "$func64"
+		"$func12" -> finish
+		main -> "$func24"
+		"$func81" -> "$func81"
+		"$func60" -> "$func69"
+		"$func12" -> "$func64"
+		"$func74" -> "$func71"
+		main -> "$func69" [label=6]
+		"$func26" -> "$func69"
+		"$func52" -> "$func47"
+		"$func76" -> "$func75"
+		"$func67" -> "$func93"
+		main -> "$func45"
+		"$func20" -> "$func52"
+		"$func54" -> "$func46"
+		main -> "$func67" [label=2]
+		"$func23" -> "$func66" [label=2]
+		"$func70" -> "$func58"
+		"$func64" -> "$func63"
+		main -> "$func83" [label=2]
+		"$func73" -> "$func75"
+		"$func31" -> "$func69"
+		"$func26" -> "$func18"
+		"$func65" -> "$func62"
+		main -> "$func40" [label=2]
+		"$func53" -> "$func47"
+		main -> "$func23" [label=2]
+		main -> "$func28"
+		"$func58" -> "$func64"
+		"$func91" -> "$func92"
+		"$func17" -> "$func66"
+		"$func22" -> "$func18"
+		"$func28" -> "$func66"
+		main -> "$func70" [label=6]
+		"$func64" -> "$func62"
+		"$func73" -> "$func76"
+		"$func22" -> "$func51" [label=2]
+		main -> "$func11" [label=4]
+		"$func40" -> "$func39" [label=2]
+		"$func65" -> "$func74"
+		"$func22" -> "$func53"
+		"$func49" -> "$func46"
+		"$func73" -> "$func72" [label=2]
+		"$func27" -> "$func64"
+		deploy -> "$func44"
+		"$func26" -> "$func9" [label=4]
+		"$func83" -> "$func84"
+		"$func15" -> "$func50"
+		"$func36" -> "$func73"
+		main -> "$func26" [label=2]
+		"$func57" -> "$func69"
+		deploy -> "$func27"
+		"$func72" -> "$func71"
+		main -> "$func27"
+		"$func12" -> "$func66"
+		"$func63" -> "$func62"
+		deploy -> "$func66" [label=9]
+		deploy -> "$func32" [label=2]
+		"$func13" -> revert
+		"$func26" -> "$func15"
+		"$func74" -> "$func76"
+		deploy -> "$func18"
+		"$func22" -> "$func50" [label=2]
+		"$func45" -> "$func59" [label=3]
+		deploy -> "$func14"
+		"$func70" -> "$func93"
+		"$func21" -> "$func11"
+		"$func26" -> "$func53" [label=2]
+		deploy -> registerAsset
+		"$func41" -> "$func45"
+		"$func26" -> "$func29" [label=2]
+		"$func52" -> "$func48"
+		"$func62" -> "$func36"
+		"$func38" -> getCallData
+		"$func20" -> "$func41"
+		"$func13" -> "$func66"
+		"$func12" -> "$func31"
+		main -> "$func38"
+		"$func79" -> "$func77" [label=14]
+		"$func68" -> "$func65"
+		"$func27" -> "$func69"
+		"$func65" -> "$func73"
+		"$func78" -> "$func93"
+		"$func38" -> "$func66" [label=2]
+		"$func45" -> "$func42"
+		main -> "$func13"
+		main -> "$func20"
+		deploy -> "$func19" [label=3]
+		"$func39" -> "$func68"
+		"$func45" -> "$func61"
+		"$func17" -> "$func30"
+		"$func42" -> "$func64"
+		"$func13" -> "$func60" [label=2]
+		"$func20" -> "$func44"
+		"$func26" -> "$func22" [label=2]
+		main -> "$func66" [label=15]
+		"$func65" -> "$func93"
+		deploy -> "$func38"
+		"$func24" -> "$func37"
+		"$func38" -> "$func42" [label=2]
+		"$func45" -> "$func66" [label=3]
+		"$func56" -> "$func59" [label=2]
+		"$func89" -> "$func80" [label=2]
+		"$func14" -> "$func19" [label=2]
+		main -> "$func41"
+		"$func14" -> "$func17"
+		main -> "$func54"
+		"$func22" -> "$func43"
+		"$func43" -> setStorage
+		deploy -> "$func70" [label=2]
+		deploy -> "$func40"
+		"$func28" -> "$func9" [label=3]
+		"$func65" -> "$func63"
+		"$func89" -> "$func88" [label=2]
+		"$func11" -> "$func93"
+		main -> "$func79" [label=2]
+		main -> "$func87" [label=2]
+		"$func28" -> "$func37"
+		"$func67" -> "$func68"
+		deploy -> "$func31" [label=3]
+		deploy -> "$func54"
+		"$func28" -> "$func8" [label=2]
+		"$func23" -> "$func24"
+		"$func13" -> "$func58"
+		"$func37" -> "$func74"
+		"$func69" -> "$func67"
+		main -> "$func86" [label=2]
+		"$func20" -> "$func54"
+		"$func50" -> "$func49"
+		"$func38" -> getCallDataSize
+		"$func20" -> "$func19"
+		"$func16" -> "$func30"
+		deploy -> "$func20"
+		deploy -> "$func41"
+		"$func22" -> "$func15" [label=2]
+		main -> getCaller
+		main -> "$func58"
+		deploy -> "$func24"
+		"$func49" -> "$func78"
+		"$func13" -> "$func69" [label=2]
+		deploy -> "$func16" [label=2]
+		"$func27" -> "$func68"
+		deploy -> "$func23" [label=2]
+		deploy -> "$func61"
+		main -> "$func25" [label=2]
+	}
+}

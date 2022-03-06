@@ -47,11 +47,6 @@ class Graph(object):
         if root:
             dfs(root)
 
-        # for node in self.nodes():
-        #     if not node in self.visited:
-        #         dfs(node)
-
-        #print (order)
         self.visited.clear()
         return order
 
@@ -107,13 +102,6 @@ class Graph(object):
             queue.append(root)
             order.append(root)
             bfs()
-
-        # for node in self.nodes():
-        #     if not node in self.visited:
-        #         queue.append(node)
-        #         order.append(node)
-        #         bfs()
-        #print (order)
 
         self.visited.clear()
         return order
