@@ -6,7 +6,7 @@ from analyzer.tools import gen_funcs_call_graph
 from analyzer.tools import gen_f_param
 from octopus.platforms.ETH.cfg import EthereumCFG
 
-import time
+from analyzer.tools import gen_func_graph_params
 
 def usage():
     print(
@@ -130,17 +130,6 @@ def Vuldetect(file_name, vul_type, output_file):
         focus_funcs_get_storage = list(set(focus_funcs_get_storage))
         # print("focused getStorage : " + str(focus_funcs_get_storage))
 
-        getCallerOffset, setStorageOffset = get_call_offsets(func_main_edges, func_main_blocks, focus_funcs_get_caller, focus_funcs_storage)
-        print("")
-        print("getCallerOffset: " + " ".join('%s' %id for id in getCallerOffset))
-        print("setStorageOffset: " + " ".join('%s' %id for id in setStorageOffset))
-        paths_blocks = get_call_paths(cfg, func_main_blocks, getCallerOffset, setStorageOffset)
-
-        block_focus = []
-        for pb in paths_blocks:
-            for bb in pb:
-                if(len(bb)>0):
-                    block_focus.append(bb)
 
         focuc_funcs = []
         focuc_funcs.append(focus_funcs_get_caller[0])
@@ -148,7 +137,7 @@ def Vuldetect(file_name, vul_type, output_file):
 
         break_out_flag = False
 
-        for bb in block_focus:
+        for bb in [func_main_blocks]:
             # wasmvm
             wasmvm = WasmVM(cfg, func_map)
             for b in bb:
@@ -179,9 +168,5 @@ def Vuldetect(file_name, vul_type, output_file):
 
 
 if __name__ == '__main__':
-    time_begin = time.time()
     Vuldetect("/Users/shall/Paper/wasmAnalyzer/sample/access_control_withparam.wasm","1","log.txt")
-    time_end = time.time()
-    time = time_end - time_begin
-    print('time:', time)
     # main(sys.argv)

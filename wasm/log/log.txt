@@ -3,3 +3,9 @@
 /Users/shall/Paper/wasmAnalyzer/sample/no_access_control_setcaller.wasm        Vul1! No Access Control!
 /Users/shall/Paper/wasmAnalyzer/sample/no_access_control_setparam.wasm        Vul1! No Access Control!
 /Users/shall/Paper/wasmAnalyzer/sample/access_control_withparam.wasm        No Vul1.
+/Users/shall/Paper/wasmAnalyzer/sample/contract.wasm        No Vul1.
+/Users/shall/Paper/wasmAnalyzer/sample/contract.wasm        Vul1! No Access Control!
+/Users/shall/Paper/wasmAnalyzer/sample/contract.wasm        Vul1! No Access Control!
+/Users/shall/Paper/wasmAnalyzer/sample/access_control_withparam.wasm        No Vul1.
+/Users/shall/Paper/wasmAnalyzer/sample/access_control_withparam.wasm        No Vul1.
+/Users/shall/Paper/wasmAnalyzer/sample/access_control_withparam.wasm        No Vul1.
