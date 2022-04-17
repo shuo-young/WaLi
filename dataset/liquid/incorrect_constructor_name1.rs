@@ -35,8 +35,10 @@ mod missing {
 
         pub fn withdraw(&mut self) {
             if self.onlyowner(self.env().get_caller()) {
-                // self.owner.transfer(balance);
+                // transfer all assets to the owner
             }
         }
+
+        // omission
     }
 }

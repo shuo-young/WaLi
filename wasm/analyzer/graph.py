@@ -10,39 +10,39 @@ class Graph(object):
             for e in edges:
                 self.add_edge(e)
 
-    def add_nodes(self,nodelist):
+    def add_nodes(self, nodelist):
 
         for node in nodelist:
             self.add_node(node)
 
-    def add_node(self,node):
+    def add_node(self, node):
         if not node in self.nodes():
             self.node_neighbors[node] = []
 
-    def add_edge(self,edge):
-        u,v = edge
-        if(v not in self.node_neighbors[u]) and ( u not in self.node_neighbors[v]):
+    def add_edge(self, edge):
+        u, v = edge
+        if(v not in self.node_neighbors[u]) and (u not in self.node_neighbors[v]):
             self.node_neighbors[u].append(v)
-            self.maps[(u,v)] = True
-            self.maps[(v,u)] = False
+            self.maps[(u, v)] = True
+            self.maps[(v, u)] = False
 
-            if(u!=v):
+            if(u != v):
                 self.node_neighbors[v].append(u)
 
     def nodes(self):
         return self.node_neighbors.keys()
 
-    def depth_first_search(self,root=None):
+    def depth_first_search(self, root=None):
         order = []
+
         def dfs(node):
             self.visited[node] = True
             order.append(node)
             for n in self.node_neighbors[node]:
-                if not self.maps[(node,n)]:
+                if not self.maps[(node, n)]:
                     continue
                 if not n in self.visited:
                     dfs(n)
-
 
         if root:
             dfs(root)
@@ -63,7 +63,7 @@ class Graph(object):
                     order.pop()
                     self.visited[start] = False
                     break
-                if not self.maps[(start,n)]:
+                if not self.maps[(start, n)]:
                     if n == self.node_neighbors[start][-1]:
                         order.pop()
                         self.visited[start] = False
@@ -74,7 +74,6 @@ class Graph(object):
                     order.pop()
                     self.visited[start] = False
 
-
         if root:
             dfs_all_paths(root, end)
 
@@ -84,12 +83,13 @@ class Graph(object):
 
         return paths
 
-    def breadth_first_search(self,root=None):
+    def breadth_first_search(self, root=None):
         queue = []
         order = []
+
         def bfs():
-            while len(queue)> 0:
-                node  = queue.pop(0)
+            while len(queue) > 0:
+                node = queue.pop(0)
 
                 self.visited[node] = True
                 for n in self.node_neighbors[node]:

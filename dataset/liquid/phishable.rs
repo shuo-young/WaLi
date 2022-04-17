@@ -23,7 +23,7 @@ mod phishable {
         pub fn withdrawAll(&mut self, _recipient: Address) {
             // <yes> <report> ACCESS_CONTROL
             if self.owner.eq(&self.env().get_tx_origin()) {
-                // _recipient.transfer(balance);
+                // transfer all assets to the _recipient
             }
         }
     }

@@ -1,5 +1,7 @@
 import getopt
 import sys
+import os
+import time
 from analyzer.tools import get_call_offsets, get_call_paths
 from analyzer.wasmvm import WasmVM
 from analyzer.tools import gen_funcs_call_graph
@@ -7,6 +9,7 @@ from analyzer.tools import gen_f_param
 from octopus.platforms.ETH.cfg import EthereumCFG
 
 from analyzer.tools import gen_func_graph_params
+
 
 def usage():
     print(
@@ -21,9 +24,11 @@ def usage():
         '''
     )
 
+
 def main(argv):
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'i:t:ho:', ['input', 'type', 'help', 'output'])
+        opts, args = getopt.getopt(sys.argv[1:], 'i:t:ho:', [
+                                   'input', 'type', 'help', 'output'])
     except getopt.GetoptError:
         usage()
         sys.exit()
@@ -48,6 +53,7 @@ def main(argv):
     print("")
     Vuldetect(file_name, vul_type, output_file)
     print("")
+
 
 def Vuldetect(file_name, vul_type, output_file):
     with open(file_name, 'rb') as f:
@@ -90,15 +96,20 @@ def Vuldetect(file_name, vul_type, output_file):
         vul_access_control = True
 
         # indirect to getCaller
-        paths_indirect_call = graph_funcs.depth_first_search_path(main_idx, get_caller_idx)
+        paths_indirect_call = graph_funcs.depth_first_search_path(
+            main_idx, get_caller_idx)
         print("indirect getCaller path:", paths_indirect_call)  # blocks name
 
         # indirect to setStorage
-        paths_indirect_set_storage = graph_funcs.depth_first_search_path(main_idx, set_storage_idx)
-        print("indirect setStorage path:", paths_indirect_set_storage)  # blocks name
+        paths_indirect_set_storage = graph_funcs.depth_first_search_path(
+            main_idx, set_storage_idx)
+        print("indirect setStorage path:",
+              paths_indirect_set_storage)  # blocks name
 
-        paths_indirect_get_storage = graph_funcs.depth_first_search_path(main_idx, get_storage_idx)
-        print("indirect getStorage path:", paths_indirect_get_storage)  # blocks name
+        paths_indirect_get_storage = graph_funcs.depth_first_search_path(
+            main_idx, get_storage_idx)
+        print("indirect getStorage path:",
+              paths_indirect_get_storage)  # blocks name
 
         # opcode simple logic
         # !getCaller | getCaller & setStorage & !getStorage => vul!
@@ -129,7 +140,6 @@ def Vuldetect(file_name, vul_type, output_file):
             focus_funcs_get_storage.append(p[1])
         focus_funcs_get_storage = list(set(focus_funcs_get_storage))
         # print("focused getStorage : " + str(focus_funcs_get_storage))
-
 
         focuc_funcs = []
         focuc_funcs.append(focus_funcs_get_caller[0])
@@ -165,8 +175,35 @@ def Vuldetect(file_name, vul_type, output_file):
         print("######result########")
 
 
-
-
 if __name__ == '__main__':
-    Vuldetect("/Users/shall/Paper/wasmAnalyzer/sample/access_control_withparam.wasm","1","log.txt")
+    time_begin = time.time()
+    Vuldetect(
+        "/Users/shall/Paper/wasmAnalyzer/dataset/liquid/wasm/contract.wasm", "1", "log.txt")
+    time_end = time.time()
+    time = time_end - time_begin
+    print('time:', time)
+    # root = '/Users/shall/Paper/wasmAnalyzer/dataset/liquid/wasm/'
+    # # path = os.path.join(root, 'part_A_final', 'train_data', 'images')
+    # pathnames = []
+    # for (dirpath, dirnames, filenames) in os.walk(root):
+    #     for filename in filenames:
+    #         pathnames += [os.path.join(dirpath, filename)]
+    # print(pathnames)
+
+    # time_dict = {}
+    # for wasm_file in pathnames:
+    #     time_begin = time.time()
+    #     Vuldetect(wasm_file, "1", "log.txt")
+    #     time_dict[wasm_file] = time.time()
+    #     time_end = time.time()
+    #     cons_time = time_end - time_begin
+    #     print('time:', cons_time)
+    #     time_dict[wasm_file] = cons_time
+
+    # draw_dict = {}
+    # i = 0
+    # for k, v in time_dict.items():
+    #     draw_dict[i] = v
+    #     i += 1
+    # print(draw_dict)
     # main(sys.argv)

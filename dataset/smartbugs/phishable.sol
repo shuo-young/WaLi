@@ -4,16 +4,16 @@
  * @vulnerable_at_lines: 20
  */
 
- pragma solidity ^0.4.22;
+pragma solidity ^0.4.22;
 
- contract Phishable {
+contract Phishable {
     address public owner;
 
-    constructor (address _owner) {
+    constructor(address _owner) {
         owner = _owner;
     }
 
-    function () public payable {} // collect ether
+    function() public payable {} // collect ether
 
     function withdrawAll(address _recipient) public {
         // <yes> <report> ACCESS_CONTROL

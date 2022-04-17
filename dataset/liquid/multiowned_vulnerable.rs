@@ -17,12 +17,19 @@ mod multiownable {
     #[liquid(methods)]
     impl MultiOwnable {
         // constructor
+        /**
+         * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+         * account.
+         */
         pub fn new(&mut self) {
             self.root.set(self.env().get_caller());
             self.owners[&self.root] = self.env().get_caller();
         }
 
         // modifer semantic
+        /**
+         * @dev Throws if called by any account other than the owner.
+         */
         pub fn onlyowner(&mut self, address: Address) -> bool {
             if self.owners[&address] != Address::default() {
                 true

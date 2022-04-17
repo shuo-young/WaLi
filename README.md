@@ -1,29 +1,42 @@
 # WaLi
 
-Wasm Analyzer for Liquid Smart Contract
+A control-flow-based analyzer of Wasm smart contracts.
+
+Supported contract type:
+
+- [x] [Liquid smart contract](https://github.com/WeBankBlockchain/liquid)
+- [ ] Other types
 
 ## CFG/CG generator
-1. Get the bytecode(Hex) of smart contract
+
+The generator is based on [Octopus](https://github.com/pventuzelo/octopus), a security analysis framework for WebAssembly module and Blockchain Smart Contract.
+
+### Usage
+
+1. Get the bytecode(Hex) of smart contract.
    ```shell
     $ xxd -p ./sample/access_control_withparam.wasm | tr -d $'\n' > contractdemo.bytecode
    ```
-2. Replace filename in `ewasm.py` and run script, output gv file will be generated in the project root directory
+2. Replace filename in `wasm.py` and run script, output gv file will be generated in the project root directory.
 
 Demo file: `democg.png`, `cfg.gv`, `cg.gv`
 
 ## Detector
 
-WaLi can detect **Access Control** vulnerability currently
+WaLi can detect **Access Control** vulnerability currently.
+The instructions of Wasm simulator are modeled according to [EVulHunter](https://github.com/EVulHunter/EVulHunter).
 
 ### Demo
 
 #### Run demo
+
 ```shell
 $ cd wasm
-$ python3 vul.py -i ../sample/access_control_withparam.wasm -t 1 -o "log1.txt"
+$ python3 vul.py -i ../sample/access_control_withparam.wasm -t 1 -o "output.log"
 ```
 
 #### Output demo
+
 ```shell
 indirect getCaller path: [[35, 3]]
 indirect setStorage path: [[35, 26, 43, 0], [35, 26, 22, 43, 0]]
@@ -49,3 +62,7 @@ keyFactor3 True!
 No Vul1.
 ######result########
 ```
+
+## Dataset
+
+The dataset is converted from [SmartBugs](https://github.com/smartbugs/smartbugs/tree/master/dataset/access_control), we rewrited them while keeping the program semantic as the same as possible.

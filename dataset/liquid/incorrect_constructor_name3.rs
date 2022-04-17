@@ -26,8 +26,6 @@ mod missing {
             }
         }
 
-        // The name of the constructor should be Missing
-        // Anyone can call the IamMissing once the contract is deployed
         // <yes> <report> ACCESS_CONTROL
         pub fn Constructor(&mut self) {
             self.owner.set(self.env().get_caller());
@@ -35,7 +33,7 @@ mod missing {
 
         pub fn withdraw(&mut self) {
             if self.onlyowner(self.env().get_caller()) {
-                // self.owner.transfer(balance);
+                // transfer all assets to the owner
             }
         }
     }

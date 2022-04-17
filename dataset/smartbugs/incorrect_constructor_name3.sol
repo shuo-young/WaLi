@@ -6,27 +6,22 @@
 
 pragma solidity ^0.4.24;
 
-contract Missing{
+contract Missing {
     address private owner;
 
-    modifier onlyowner {
-        require(msg.sender==owner);
+    modifier onlyowner() {
+        require(msg.sender == owner);
         _;
     }
+
     // <yes> <report> ACCESS_CONTROL
-    function Constructor()
-        public
-    {
+    function Constructor() public {
         owner = msg.sender;
     }
 
-    function () payable {}
+    function() payable {}
 
-    function withdraw()
-        public
-        onlyowner
-    {
-       owner.transfer(this.balance);
+    function withdraw() public onlyowner {
+        owner.transfer(this.balance);
     }
-
 }

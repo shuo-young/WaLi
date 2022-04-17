@@ -1,6 +1,7 @@
 from .graph import *
 
-def get_common_edges(a = list(), b = list()):
+
+def get_common_edges(a=list(), b=list()):
     common = list()
     if len(a) and len(b):
         for ai in a:
@@ -41,15 +42,20 @@ def enum_func_call_edges(functions, len_imports):
                 # print(type(inst.insn_byte[1]))
                 # print(func.name)
                 node_to = int(inst.operand_interpretation.split(',')[-1].split(' ')[
-                                  -1])  # node_to is the table of functions to index into.(http://fitzgeraldnick.com/2018/04/26/how-does-dynamic-dispatch-work-in-wasm.html)
+                    -1])  # node_to is the table of functions to index into.(http://fitzgeraldnick.com/2018/04/26/how-does-dynamic-dispatch-work-in-wasm.html)
                 call_edges.append((node_from, N_FUNCS))
 
     return call_edges
 
+
 def gen_f_param(cfg, f_name):
-    f_blocks = list(b for f in cfg.functions for b in f.basicblocks if f.name == f_name)  # entire block
-    f_edges = list(e for e in cfg.edges if e.node_from in list(b.name for b in f_blocks))  # entire
+    # entire block
+    f_blocks = list(
+        b for f in cfg.functions for b in f.basicblocks if f.name == f_name)
+    f_edges = list(e for e in cfg.edges if e.node_from in list(
+        b.name for b in f_blocks))  # entire
     return f_blocks, f_edges
+
 
 def gen_g_param(f_blocks, f_edges):
     g_nodes = list(b.name for b in f_blocks)
@@ -57,6 +63,7 @@ def gen_g_param(f_blocks, f_edges):
     for e in f_edges:
         g_edges.append((e.node_from, e.node_to))
     return g_nodes, g_edges
+
 
 def gen_func_graph_params(cfg, f_name):
     f_blocks, f_edges = gen_f_param(cfg, f_name)
@@ -98,7 +105,8 @@ def get_call_paths(cfg, func_main_blocks, getCallerOffset, setStorageOffset):
                 storage_bb.append(bb.name)
                 break
     # not use func_edges
-    func_blocks, func_edges, graph_nodes, graph_edges = gen_func_graph_params(cfg, "main")
+    func_blocks, func_edges, graph_nodes, graph_edges = gen_func_graph_params(
+        cfg, "main")
     path_all = []
     graph = Graph(graph_nodes, graph_edges)
     for el in caller_bb:
@@ -111,6 +119,7 @@ def get_call_paths(cfg, func_main_blocks, getCallerOffset, setStorageOffset):
             path_all.append(paths_blocks)
 
     return path_all
+
 
 def get_paths_to_target(paths, func_blocks, focus_funcs):
     # return the paths_foucs in paths which will lead to indirectly call func in focus funcs
@@ -137,7 +146,8 @@ def get_indirect_targets(wasmvm, paths_focus, func_blocks, func_args, focus_func
         wasmvm.trace_func(path_blocks, func_args, focus_funcs)
         # print(wasmvm.indirect_targets)
 
-def blocks_name_to_blocks(blocks_name = list(), func_blocks = list()):
+
+def blocks_name_to_blocks(blocks_name=list(), func_blocks=list()):
     blocks = []
     for b_name in blocks_name:
         block = list(b for b in func_blocks if b.name == b_name)[0]
@@ -146,7 +156,8 @@ def blocks_name_to_blocks(blocks_name = list(), func_blocks = list()):
 
 
 def get_func_paths(cfg, f_name):
-    func_blocks, func_edges, graph_nodes, graph_edges = gen_func_graph_params(cfg, f_name)
+    func_blocks, func_edges, graph_nodes, graph_edges = gen_func_graph_params(
+        cfg, f_name)
     graph = Graph(graph_nodes, graph_edges)
 
     # get all possible paths in the above graph
@@ -158,19 +169,13 @@ def get_func_paths(cfg, f_name):
         paths_blocks.append(p_blocks)
     return paths_blocks
 
+
 def gen_funcs_call_graph(cfg, N_FUNCS):
-    call_edges = enum_func_call_edges(cfg.functions, len(cfg.analyzer.imports_func))
-    funcs_idx = list(range(0, N_FUNCS + 1))  # N_FUNCS is the indirect call target
+    call_edges = enum_func_call_edges(
+        cfg.functions, len(cfg.analyzer.imports_func))
+    # N_FUNCS is the indirect call target
+    funcs_idx = list(range(0, N_FUNCS + 1))
     funcs_edges = []
     for e in call_edges:
         funcs_edges.append((e[0], e[1]))
     return Graph(funcs_idx, funcs_edges)
-
-
-
-
-
-
-
-
-

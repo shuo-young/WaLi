@@ -1,4 +1,6 @@
 import getopt
+from importlib.resources import path
+import os
 import sys
 from analyzer.tools import get_call_offsets, get_call_paths
 from analyzer.wasmvm import WasmVM
@@ -190,12 +192,37 @@ def Vuldetect(file_name, vul_type, output_file):
 
 
 if __name__ == '__main__':
-    time_begin = time.time()
-    main(sys.argv)
-    # Vuldetect(
-    #     "/Users/shall/Paper/wasmAnalyzer/dataset/liquid/wasm/contract.wasm", "1", "log.txt")
-    time_end = time.time()
-   
-    time = time_end - time_begin
-    print('time:', time)
-    main(sys.argv)
+    root = '/Users/shall/Paper/wasmAnalyzer/dataset/liquid/wasm/'
+    # path = os.path.join(root, 'part_A_final', 'train_data', 'images')
+    pathnames = []
+    for (dirpath, dirnames, filenames) in os.walk(root):
+        for filename in filenames:
+            pathnames += [os.path.join(dirpath, filename)]
+    print(pathnames)
+
+    time_dict = {}
+    for wasm_file in pathnames:
+        time_begin = time.time()
+        Vuldetect(wasm_file, "1", "log.txt")
+        time_dict[wasm_file] = time.time()
+        time_end = time.time()
+        cons_time = time_end - time_begin
+        print('time:', cons_time)
+        time_dict[wasm_file] = cons_time
+
+    draw_dict = {}
+    i = 0
+    for k, v in time_dict.items():
+        draw_dict[i] = v
+        i += 1
+    print(draw_dict)
+
+    res = {0: 30.817424297332764, 1: 30.59173083305359, 2: 30.760103940963745, 3: 0.14156603813171387, 4: 30.486154079437256,
+           5: 0.09806299209594727, 6: 12.845331907272339, 7: 0.14941787719726562, 8: 0.09142780303955078, 9: 31.510682106018066, 10: 31.54552674293518}
+
+    # time_begin = time.time()
+    # Vuldetect("/Users/shall/Paper/wasmAnalyzer/dataset/liquid/wasm/wallet_03_wrong_constructor.wasm","1","log.txt")
+    # time_end = time.time()
+    # time = time_end - time_begin
+    # print('time:', time)
+    # main(sys.argv)

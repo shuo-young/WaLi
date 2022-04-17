@@ -4,28 +4,30 @@ use liquid::storage;
 use liquid_lang as liquid;
 
 #[liquid::contract]
-mod mycontract {
+mod wallet {
 
     use super::*;
 
     #[liquid(storage)]
-    struct MyContract {
+    struct Wallet {
+        bonusCodes: storage::Value<Vec<u256>>,
         owner: storage::Value<Address>,
     }
 
     #[liquid(methods)]
-    impl MyContract {
-        // constructor
+    impl Wallet {
         pub fn new(&mut self) {
+            self.bonusCodes.set(Vec::new());
             self.owner.set(self.env().get_caller());
         }
 
-        pub fn sendTo(&mut self, to: Address, value: u128) {
+        pub fn PopBonusCode(&mut self) {
             // <yes> <report> ACCESS_CONTROL
-            if self.owner.eq(&self.env().get_tx_origin()) {
-                // transfer to receiver
-                // let ret = self.transfer(self.env().get_address(), to, value);
+            if self.bonusCodes.len() >= 0 as usize {
+                self.bonusCodes.len() - 1;
             }
         }
+
+        // omission
     }
 }

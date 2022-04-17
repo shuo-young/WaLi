@@ -4,29 +4,25 @@
  * @vulnerable_at_lines: 25
  */
 
- pragma solidity ^0.4.15;
+pragma solidity ^0.4.15;
 
- contract Unprotected{
-     address private owner;
+contract Unprotected {
+    address private owner;
 
-     modifier onlyowner {
-         require(msg.sender==owner);
-         _;
-     }
+    modifier onlyowner() {
+        require(msg.sender == owner);
+        _;
+    }
 
-     function Unprotected()
-         public
-     {
-         owner = msg.sender;
-     }
+    function Unprotected() public {
+        owner = msg.sender;
+    }
 
-     // This function should be protected
-     // <yes> <report> ACCESS_CONTROL
-     function changeOwner(address _newOwner)
-         public
-     {
+    // This function should be protected
+    // <yes> <report> ACCESS_CONTROL
+    function changeOwner(address _newOwner) public {
         owner = _newOwner;
-     }
+    }
 
     /*
     function changeOwner_fixed(address _newOwner)
@@ -36,4 +32,4 @@
         owner = _newOwner;
      }
      */
- }
+}
